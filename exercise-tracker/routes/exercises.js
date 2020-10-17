@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Exercise = require("../Models/Exercise.Model");
 
-router.get("/").get((req, res) => {
+router.get("/", (req, res) => {
+  console.log("this is not being hit");
   Exercise.find()
     .then((e) => res.json(e))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.get("/:id").get((req, res) => {
+router.get("/:id", (req, res) => {
   Exercise.findById(req.params.id)
     .then((ex) => res.json(ex))
     .catch((err) => res.status(400).json("Error:" + err));
@@ -37,18 +38,19 @@ router.post("/update/:id", (req, res) => {
 
 router.post("/add", (req, res) => {
   const username = req.body.username;
-  const desc = rq.body.description;
+  const description = req.body.description;
   const duration = Number(req.body.duration);
   const date = Date.parse(req.body.date);
 
   const newExercise = new Exercise({
     username,
-    desc,
+    description,
     duration,
     date,
   });
 
-  Exercise.save(newExercise)
+  newExercise
+    .save()
     .then(() => res.json("Exercise Added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });

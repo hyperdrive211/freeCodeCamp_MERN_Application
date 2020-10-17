@@ -14,7 +14,7 @@ const exerciseSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    data: {
+    date: {
       type: Date,
       required: true,
     },

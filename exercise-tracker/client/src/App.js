@@ -1,15 +1,25 @@
 import React from "react";
-import { BrowserRouter as Router, Rouite } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ExerciseList from "./components/exercises-list.component";
+import EditExercise from "./components/edit-exercise.component";
+import CreateExercise from "./components/create-exercise.component";
+import CreateUser from "./components/create-user.component";
+import Navbar from "./components/navbar.component";
 
 function App() {
-  <Router>
-    <br />
-    <Route path="/" exact component={ExerciseList} />
-    <Route path="/edit/:id" component={EditExercise} />
-    <Route path="/create" component={CreateExercise} />
-    <Route path="/user" component={CreateUser} />
-  </Router>;
+  return (
+    <Router>
+      <div className="container">
+        <Navbar />
+        <br />
+        <Route path="/" exact component={ExerciseList} />
+        <Route path="/edit/:id" component={EditExercise} />
+        <Route path="/create" component={CreateExercise} />
+        <Route path="/users" component={CreateUser} />
+      </div>
+    </Router>
+  );
 }
 
 export default App;

@@ -25,7 +25,7 @@ connection.once("open", () => {
 
 //Routes
 app.use("/exercises", require("./routes/exercises"));
-app.use("./users", require("./routes/users"));
+app.use("/users", require("./routes/users"));
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
