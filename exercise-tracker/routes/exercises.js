@@ -3,7 +3,6 @@ const router = express.Router();
 const Exercise = require("../Models/Exercise.Model");
 
 router.get("/", (req, res) => {
-  console.log("this is not being hit");
   Exercise.find()
     .then((e) => res.json(e))
     .catch((err) => res.status(400).json("Error: " + err));
@@ -11,7 +10,10 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Exercise.findById(req.params.id)
-    .then((ex) => res.json(ex))
+    .then((ex) => {
+      console.log(ex);
+      res.json(ex);
+    })
     .catch((err) => res.status(400).json("Error:" + err));
 });
 
